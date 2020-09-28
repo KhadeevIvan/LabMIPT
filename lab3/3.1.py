@@ -23,6 +23,15 @@ def ship(spx, spy, sl, sw):
     circle(screen, (255, 255, 255), (spx + sl * 3, spy + int(sw / 2)), int(0.3 * sw))
     rect(screen, (0, 0, 0), (spx + sl, spy - 3 * sw, int(sl / 10), 3 * sw))
     polygon(screen, (204, 204, 204), [(spx + sl + int(sl / 10), spy - 3 * sw), (spx + int(sl * 1.2), spy - int(1.5 * sw)), (spx + sl + int(sl / 10), spy), (spx + sl * 2, spy - int(1.5 * sw))])
+    polygon(screen, (204, 0, 0), [(spx + sl, spy - 3 * sw), (spx + sl, spy - 4 * sw), (spx + int(sl * 1.5), spy - 4 * sw), (spx + int(sl * 1.3), spy - int(3.5 * sw)), (spx + int(sl * 1.5), spy - 3 * sw)])
+def shipreverse(spx, spy, sl, sw):
+    polygon(screen, (102, 51, 0), [(spx, spy), (spx - sl * 4, spy), (spx - sl * 3, spy + sw), (spx, spy + sw)])
+    arc(screen, (102, 51, 0), (spx - sw, spy - sw, 2 * sw, 2 * sw), 1.5 * np.pi, 2 * np.pi, sw)
+    circle(screen, (0, 0, 0), (spx - sl * 3, spy + int(sw / 2)), int(0.4 * sw))
+    circle(screen, (255, 255, 255), (spx - sl * 3, spy + int(sw / 2)), int(0.3 * sw))
+    rect(screen, (0, 0, 0), (spx - sl, spy - 3 * sw, int(sl / 10), 3 * sw))
+    polygon(screen, (204, 204, 204), [(spx - sl, spy - 3 * sw), (spx - int(sl * 1.2), spy - int(1.5 * sw)), (spx - sl, spy), (spx - sl * 2, spy - int(1.5 * sw))])
+    polygon(screen, (204, 0, 0), [(spx - int(0.9 * sl) , spy - 3 * sw), (spx - int(0.9 * sl), spy - 4 * sw), (spx - int(sl * 1.5), spy - 4 * sw), (spx - int(sl * 1.3), spy - int(3.5 * sw)), (spx - int(sl * 1.5), spy - 3 * sw)])
 def cloud(clx, cly, a, b):
     ellipse(screen,(255, 255, 255), (clx, cly, 4 * a, 4 * b))
     ellipse(screen,(255, 255, 255), (clx + a, cly - 2 * b, 4 * a, 4 * b))
@@ -37,10 +46,13 @@ def umbrella(umx, umy, ul, uw):
     for k in range(6):
         polygon(screen, (0, 0, 0), [(umx + ul, umy - uw), (umx + 16 * ul - 6 * ul * k, umy), (umx - 14 * ul, umy)], 1)
 
+umbrella(350, 550, 10, 60)
 umbrella(150, 500, 7, 50)    
-ship(800, 450, 150, 60)
 cloud(200, 200, 30, 25)
-
+cloud(900, 150, 40, 30)
+shipreverse(400, 450, 50, 20)
+shipreverse(600, 450, 100, 40)
+ship(800, 450, 150, 60)
 pygame.display.update()
 clock = pygame.time.Clock()
 finished = False
